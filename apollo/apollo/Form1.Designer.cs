@@ -33,12 +33,11 @@
             ts_open = new ToolStripMenuItem();
             ts_rep = new ToolStripMenuItem();
             ts_speed = new ToolStripMenuItem();
+            tsMenuItem4 = new ToolStripMenuItem();
             xToolStripMenuItem = new ToolStripMenuItem();
             xToolStripMenuItem1 = new ToolStripMenuItem();
             xToolStripMenuItem2 = new ToolStripMenuItem();
             xToolStripMenuItem3 = new ToolStripMenuItem();
-            ts_fordwar = new ToolStripMenuItem();
-            ts_back = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             ts_play = new ToolStripMenuItem();
             ts_pause = new ToolStripMenuItem();
@@ -48,15 +47,25 @@
             tsb_pause = new ToolStripButton();
             tsb_stop = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
-            tsb_back = new ToolStripButton();
-            tsb_fordwar = new ToolStripButton();
-            toolStripSeparator4 = new ToolStripSeparator();
             tbs_volumeD = new ToolStripButton();
             tsb_mute = new ToolStripButton();
             tsb_volume = new ToolStripButton();
+            toolStripSeparator4 = new ToolStripSeparator();
+            tsb_back = new ToolStripButton();
+            tst_ms = new ToolStripTextBox();
+            toolStripLabel1 = new ToolStripLabel();
+            tsb_fordwar = new ToolStripButton();
+            toolStripSeparator5 = new ToolStripSeparator();
+            tsc_frames = new ToolStripComboBox();
+            tst_interval = new ToolStripTextBox();
+            tsc_format = new ToolStripComboBox();
+            tsb_export = new ToolStripButton();
+            toolStripSeparator2 = new ToolStripSeparator();
             openFileDialog1 = new OpenFileDialog();
             trackBar1 = new TrackBar();
             labelTime = new Label();
+            progressBar1 = new ProgressBar();
+            btn_cancelar = new Button();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
@@ -81,7 +90,7 @@
             // 
             // ts_rep
             // 
-            ts_rep.DropDownItems.AddRange(new ToolStripItem[] { ts_speed, ts_fordwar, ts_back, toolStripSeparator1, ts_play, ts_pause, ts_stop });
+            ts_rep.DropDownItems.AddRange(new ToolStripItem[] { ts_speed, toolStripSeparator1, ts_play, ts_pause, ts_stop });
             ts_rep.Name = "ts_rep";
             ts_rep.Size = new Size(93, 20);
             ts_rep.Text = "Reproducción";
@@ -89,11 +98,19 @@
             // 
             // ts_speed
             // 
-            ts_speed.DropDownItems.AddRange(new ToolStripItem[] { xToolStripMenuItem, xToolStripMenuItem1, xToolStripMenuItem2, xToolStripMenuItem3 });
+            ts_speed.DropDownItems.AddRange(new ToolStripItem[] { tsMenuItem4, xToolStripMenuItem, xToolStripMenuItem1, xToolStripMenuItem2, xToolStripMenuItem3 });
             ts_speed.Name = "ts_speed";
-            ts_speed.Size = new Size(166, 22);
+            ts_speed.Size = new Size(125, 22);
             ts_speed.Text = "Velocidad";
             ts_speed.ToolTipText = "Velocidad";
+            // 
+            // tsMenuItem4
+            // 
+            tsMenuItem4.CheckOnClick = true;
+            tsMenuItem4.Name = "tsMenuItem4";
+            tsMenuItem4.Size = new Size(95, 22);
+            tsMenuItem4.Text = ".25";
+            tsMenuItem4.Click += tsMenuItem4_Click;
             // 
             // xToolStripMenuItem
             // 
@@ -129,31 +146,15 @@
             xToolStripMenuItem3.Text = "2x";
             xToolStripMenuItem3.Click += xToolStripMenuItem3_Click;
             // 
-            // ts_fordwar
-            // 
-            ts_fordwar.Name = "ts_fordwar";
-            ts_fordwar.Size = new Size(166, 22);
-            ts_fordwar.Text = "Adelantar 10 sec.";
-            ts_fordwar.ToolTipText = "Adelantar 10 sec";
-            ts_fordwar.Click += tsb_fordwar_Click;
-            // 
-            // ts_back
-            // 
-            ts_back.Name = "ts_back";
-            ts_back.Size = new Size(166, 22);
-            ts_back.Text = "Retroceder 10 sec";
-            ts_back.ToolTipText = "Retroceder 10 sec";
-            ts_back.Click += tsb_back_Click;
-            // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(163, 6);
+            toolStripSeparator1.Size = new Size(122, 6);
             // 
             // ts_play
             // 
             ts_play.Name = "ts_play";
-            ts_play.Size = new Size(166, 22);
+            ts_play.Size = new Size(125, 22);
             ts_play.Text = "Play";
             ts_play.ToolTipText = "Reproducir";
             ts_play.Click += tsb_play_Click;
@@ -161,7 +162,7 @@
             // ts_pause
             // 
             ts_pause.Name = "ts_pause";
-            ts_pause.Size = new Size(166, 22);
+            ts_pause.Size = new Size(125, 22);
             ts_pause.Text = "Pausa";
             ts_pause.ToolTipText = "Pausar";
             ts_pause.Click += tsb_pause_Click;
@@ -169,7 +170,7 @@
             // ts_stop
             // 
             ts_stop.Name = "ts_stop";
-            ts_stop.Size = new Size(166, 22);
+            ts_stop.Size = new Size(125, 22);
             ts_stop.Text = "Detener";
             ts_stop.ToolTipText = "Detener";
             ts_stop.Click += tsb_stop_Click;
@@ -177,7 +178,7 @@
             // toolStrip1
             // 
             toolStrip1.Dock = DockStyle.Bottom;
-            toolStrip1.Items.AddRange(new ToolStripItem[] { tsb_play, tsb_pause, tsb_stop, toolStripSeparator3, tsb_back, tsb_fordwar, toolStripSeparator4, tbs_volumeD, tsb_mute, tsb_volume });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { tsb_play, tsb_pause, tsb_stop, toolStripSeparator3, tbs_volumeD, tsb_mute, tsb_volume, toolStripSeparator4, tsb_back, tst_ms, toolStripLabel1, tsb_fordwar, toolStripSeparator5, tsc_frames, tst_interval, tsc_format, tsb_export, toolStripSeparator2 });
             toolStrip1.Location = new Point(0, 425);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(800, 25);
@@ -222,33 +223,6 @@
             toolStripSeparator3.Name = "toolStripSeparator3";
             toolStripSeparator3.Size = new Size(6, 25);
             // 
-            // tsb_back
-            // 
-            tsb_back.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            tsb_back.Image = (Image)resources.GetObject("tsb_back.Image");
-            tsb_back.ImageTransparentColor = Color.Magenta;
-            tsb_back.Name = "tsb_back";
-            tsb_back.Size = new Size(23, 22);
-            tsb_back.Text = "toolStripButton4";
-            tsb_back.ToolTipText = "Atrás";
-            tsb_back.Click += tsb_back_Click;
-            // 
-            // tsb_fordwar
-            // 
-            tsb_fordwar.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            tsb_fordwar.Image = (Image)resources.GetObject("tsb_fordwar.Image");
-            tsb_fordwar.ImageTransparentColor = Color.Magenta;
-            tsb_fordwar.Name = "tsb_fordwar";
-            tsb_fordwar.Size = new Size(23, 22);
-            tsb_fordwar.Text = "toolStripButton5";
-            tsb_fordwar.ToolTipText = "Adelante";
-            tsb_fordwar.Click += tsb_fordwar_Click;
-            // 
-            // toolStripSeparator4
-            // 
-            toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(6, 25);
-            // 
             // tbs_volumeD
             // 
             tbs_volumeD.DisplayStyle = ToolStripItemDisplayStyle.Image;
@@ -282,6 +256,92 @@
             tsb_volume.ToolTipText = "Volumen";
             tsb_volume.Click += tsb_volume_Click;
             // 
+            // toolStripSeparator4
+            // 
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            toolStripSeparator4.Size = new Size(6, 25);
+            // 
+            // tsb_back
+            // 
+            tsb_back.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsb_back.Image = (Image)resources.GetObject("tsb_back.Image");
+            tsb_back.ImageTransparentColor = Color.Magenta;
+            tsb_back.Name = "tsb_back";
+            tsb_back.Size = new Size(23, 22);
+            tsb_back.Text = "toolStripButton4";
+            tsb_back.ToolTipText = "Atrás";
+            tsb_back.Click += tsb_back_Click;
+            // 
+            // tst_ms
+            // 
+            tst_ms.MaxLength = 32000;
+            tst_ms.Name = "tst_ms";
+            tst_ms.Size = new Size(70, 25);
+            tst_ms.Text = "10000";
+            tst_ms.TextBoxTextAlign = HorizontalAlignment.Right;
+            
+            // 
+            // toolStripLabel1
+            // 
+            toolStripLabel1.Name = "toolStripLabel1";
+            toolStripLabel1.Size = new Size(23, 22);
+            toolStripLabel1.Text = "ms";
+            // 
+            // tsb_fordwar
+            // 
+            tsb_fordwar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsb_fordwar.Image = (Image)resources.GetObject("tsb_fordwar.Image");
+            tsb_fordwar.ImageTransparentColor = Color.Magenta;
+            tsb_fordwar.Name = "tsb_fordwar";
+            tsb_fordwar.Size = new Size(23, 22);
+            tsb_fordwar.Text = "toolStripButton5";
+            tsb_fordwar.ToolTipText = "Adelante";
+            tsb_fordwar.Click += tsb_fordwar_Click;
+            // 
+            // toolStripSeparator5
+            // 
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new Size(6, 25);
+            // 
+            // tsc_frames
+            // 
+            tsc_frames.AutoCompleteCustomSource.AddRange(new string[] { "Frame actual", "Intervalo" });
+            tsc_frames.AutoSize = false;
+            tsc_frames.Name = "tsc_frames";
+            tsc_frames.Size = new Size(90, 23);
+            tsc_frames.ToolTipText = "Frame actual/intervalo";
+            
+            // 
+            // tst_interval
+            // 
+            tst_interval.Enabled = false;
+            tst_interval.Name = "tst_interval";
+            tst_interval.Size = new Size(100, 25);
+            tst_interval.Tag = "secs.";
+            tst_interval.TextBoxTextAlign = HorizontalAlignment.Right;
+            tst_interval.ToolTipText = "Cada cuantos segundos";
+            // 
+            // tsc_format
+            // 
+            tsc_format.Name = "tsc_format";
+            tsc_format.Size = new Size(75, 25);
+            tsc_format.ToolTipText = "Exportar como jpg o png";
+            // 
+            // tsb_export
+            // 
+            tsb_export.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsb_export.Image = (Image)resources.GetObject("tsb_export.Image");
+            tsb_export.ImageTransparentColor = Color.Magenta;
+            tsb_export.Name = "tsb_export";
+            tsb_export.Size = new Size(23, 22);
+            tsb_export.Text = "Exportar";
+            tsb_export.Click += tsb_export_Click;
+            // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(6, 25);
+            // 
             // openFileDialog1
             // 
             openFileDialog1.FileName = "openFileDialog1";
@@ -294,7 +354,7 @@
             trackBar1.Name = "trackBar1";
             trackBar1.Size = new Size(800, 45);
             trackBar1.TabIndex = 2;
-            trackBar1.Scroll += trackBar1_Scroll;
+            
             // 
             // labelTime
             // 
@@ -307,21 +367,43 @@
             labelTime.Size = new Size(72, 15);
             labelTime.TabIndex = 3;
             labelTime.Text = "00:00 / 00:00";
-            labelTime.Click += labelTime_Click;
+            
+            // 
+            // progressBar1
+            // 
+            progressBar1.Anchor = AnchorStyles.None;
+            progressBar1.Location = new Point(215, 203);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(354, 23);
+            progressBar1.TabIndex = 4;
+            progressBar1.Visible = false;
+            // 
+            // btn_cancelar
+            // 
+            btn_cancelar.Location = new Point(494, 232);
+            btn_cancelar.Name = "btn_cancelar";
+            btn_cancelar.Size = new Size(75, 23);
+            btn_cancelar.TabIndex = 5;
+            btn_cancelar.Text = "Cancelar";
+            btn_cancelar.UseVisualStyleBackColor = true;
+            btn_cancelar.Visible = false;
+            btn_cancelar.Click += btn_cancelar_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btn_cancelar);
+            Controls.Add(progressBar1);
             Controls.Add(labelTime);
             Controls.Add(trackBar1);
             Controls.Add(toolStrip1);
             Controls.Add(menuStrip1);
-            Icon = (Icon)resources.GetObject("$this.Icon");
+            ImeMode = ImeMode.Disable;
             MainMenuStrip = menuStrip1;
             Name = "Form1";
-            Text = "Apollo";
+            Text = "FrameForge";
             Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -337,8 +419,6 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem ts_rep;
         private ToolStripMenuItem ts_speed;
-        private ToolStripMenuItem ts_fordwar;
-        private ToolStripMenuItem ts_back;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem ts_play;
         private ToolStripMenuItem ts_pause;
@@ -362,5 +442,16 @@
         private ToolStripMenuItem xToolStripMenuItem2;
         private ToolStripMenuItem xToolStripMenuItem3;
         private Label labelTime;
+        private ToolStripTextBox tst_ms;
+        private ToolStripLabel toolStripLabel1;
+        private ToolStripMenuItem tsMenuItem4;
+        private ToolStripButton tsb_export;
+        private ToolStripComboBox tsc_frames;
+        private ToolStripSeparator toolStripSeparator5;
+        private ToolStripTextBox tst_interval;
+        private ToolStripComboBox tsc_format;
+        private ToolStripSeparator toolStripSeparator2;
+        private ProgressBar progressBar1;
+        private Button btn_cancelar;
     }
 }
